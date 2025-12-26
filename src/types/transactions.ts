@@ -1,7 +1,11 @@
 import type { Category, CategorySummary } from "./category";
 
-// Substituindo enum por union type
-export type TransactionType = "expense" | "income";
+export const TransactionType = {
+  EXPENSE: "expense",
+  INCOME: "income",
+} as const;
+
+export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType];
 
 export interface Transaction {
   id: string;
@@ -10,7 +14,7 @@ export interface Transaction {
   amount: number;
   date: string | Date;
   categoryId: string;
-  category: Category;
+  category?: Category;
   type: TransactionType;
   updatedAt: string | Date;
   createdAt: string | Date;

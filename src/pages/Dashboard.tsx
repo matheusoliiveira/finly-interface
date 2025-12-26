@@ -17,7 +17,7 @@ import {
 import type { PieLabelProps } from "recharts/types/polar/Pie";
 import Card from "../components/Card";
 import MonthYearSelect from "../components/MonthYearSelect";
-import { getTransactionsMontly, getTransactionsSummary } from "../services/transactionService";
+import { getTransactionsMonthly, getTransactionsSummary } from "../services/transactionService";
 import type { MonthlyItem, TransactionSummary } from "../types/transactions";
 import { formatCurrency } from "../utils/formatters";
 
