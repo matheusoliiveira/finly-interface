@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { AlertCircle, Calendar, DollarSign, Save, Tag } from "lucide-react";
 import { type ChangeEvent, type FormEvent, useEffect, useId, useState } from "react";
 import { useNavigate } from "react-router";
@@ -41,23 +42,20 @@ const TransactionsForm = () => {
       const response = await getCategories();
       setCategories(response);
     };
-
     fetchCategories();
   }, []);
 
   const filteredCategories = categories.filter((category) => category.type === formData.type);
 
-  const validadeForm = (): boolean => {
+  const validateForm = (): boolean => {
     if (!formData.description || !formData.amount || !formData.date || !formData.categoryId) {
       setError("Preencha todos os campos");
       return false;
     }
-
     if (formData.amount <= 0) {
-      setError("O valor deve ser maior que zero");
+      setError("O valor deve ser maior que zero ");
       return false;
     }
-
     return true;
   };
 
@@ -74,24 +72,27 @@ const TransactionsForm = () => {
     event.preventDefault();
     setLoading(true);
     setError(null);
-
     try {
-      if (!validadeForm()) {
+      if (!validateForm()) {
         return;
       }
+
+      // 🔹 Ajuste: cria data no meio-dia UTC para evitar fuso horário voltar um dia
+      const [year, month, day] = formData.date.split("-").map(Number);
+      const dateUTC = new Date(Date.UTC(year, month - 1, day || 1, 12, 0, 0));
 
       const transactionData: CreateTransactionDTO = {
         description: formData.description,
         amount: formData.amount,
         categoryId: formData.categoryId,
         type: formData.type,
-        date: `${formData.date}T12:00:00.000Z`,
+        date: dateUTC.toISOString(),
       };
 
       await createTransaction(transactionData);
       toast.success("Transação adicionada com sucesso!");
-      navigate("/transacoes");
-    } catch (error) {
+      navigate("/transaçoes");
+    } catch (_err) {
       toast.error("Falha ao adicionar transação");
     } finally {
       setLoading(false);
@@ -99,17 +100,16 @@ const TransactionsForm = () => {
   };
 
   const handleCancel = () => {
-    navigate("/transacoes");
+    navigate("/transaçoes");
   };
 
   return (
     <div className="container-app py-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold mb-6">Nova Transação</h1>
-
+        <h1 className="text-2xl font-bold mb-6">Nova Transação </h1>
         <Card>
           {error && (
-            <div className="flex items-center bg-red-200 border border-red-700 rounded-xl p-4 mb-6 gap-2">
+            <div className="flex items-center bg-red-300 border border-red-700 rounded-xl p-4 mb-6 gap-2">
               <AlertCircle className="w-5 h-5 text-red-700" />
               <p className="text-red-700">{error}</p>
             </div>
@@ -117,19 +117,20 @@ const TransactionsForm = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="mb-4 flex gap-2 flex-col">
-              <label htmlFor={formId}>Tipo de Transação</label>
+              <label htmlFor={formId}>Tipo de Transação </label>
               <TransactionTypeSelector
                 id={formId}
                 value={formData.type}
                 onChange={handleTransactionType}
               />
             </div>
+
             <Input
               label="Descrição"
               name="description"
               value={formData.description}
               onChange={handleChange}
-              placeholder="Ex: Supermercado, Salário, etc..."
+              placeholder="Ex:Supermercado,Sálario,etc..."
             />
 
             <Input
@@ -179,7 +180,7 @@ const TransactionsForm = () => {
               >
                 {loading ? (
                   <div className="flex items-center justify-center">
-                    <div className="w-4 h-4 border-4 border-gray-700 border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-4 border-gray-700 border-t-transparent rounded-full animate-spin"></div>
                   </div>
                 ) : (
                   <Save className="w-4 h-4 mr-2" />

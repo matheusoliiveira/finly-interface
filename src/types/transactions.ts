@@ -1,9 +1,7 @@
 import type { Category, CategorySummary } from "./category";
 
-export enum TransactionType {
-  EXPENSE = "expense",
-  INCOME = "income",
-}
+// Substituindo enum por union type
+export type TransactionType = "expense" | "income";
 
 export interface Transaction {
   id: string;

@@ -2,7 +2,6 @@ import { Activity, LogIn, LogOut, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { useAuth } from "../context/AuthContext";
-import Login from "../pages/Login";
 
 interface NavLink {
   name: string;
@@ -11,17 +10,17 @@ interface NavLink {
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const { authState, signOut } = useAuth();
   const { pathname } = useLocation();
 
   const isAuthenticated: boolean = !!authState.user;
-
   const navLink: NavLink[] = [
     { name: "Dashboard", path: "/dashboard" },
-    { name: "Transações", path: "/transacoes" },
+    { name: "Transações", path: "/transaçoes" },
   ];
 
-  const handleSignOut = (): void => {
+  const handlesignOut = (): void => {
     setIsOpen(false);
     signOut();
   };
@@ -44,7 +43,7 @@ const Header = () => {
     }
 
     return (
-      <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-medium">
+      <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white fount-medium">
         {authState.user.displayName?.charAt(0)}
       </div>
     );
@@ -66,7 +65,7 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   className={
-                    pathname === link.path
+                    decodeURIComponent(pathname) === link.path
                       ? "text-primary-500 bg-primary-500/10 rounded-md h-10 px-3 py-2"
                       : "text-gray-400 h-10 px-3 py-2 hover:text-primary-500 hover:bg-primary-500/5 rounded-md"
                   }
@@ -87,7 +86,7 @@ const Header = () => {
 
                 <button
                   type="button"
-                  onClick={handleSignOut}
+                  onClick={handlesignOut}
                   className=" hover:text-red-300 hover:bg-red-500 p-2 rounded-full transition-colors cursor-pointer"
                 >
                   <LogOut className="text-gray-200" />
@@ -95,19 +94,18 @@ const Header = () => {
               </div>
             ) : (
               <Link to="/login">
-                <LogIn className="bg-primary-500 text-gray-900 font-semibold px-5 py-2.5 rounded-xl flex items-center justify-center hover:bg-primary-500 transition-all" />
+                <LogIn className="bg-primary-500 text-gray-900 font-semibold px-5 py-2.5 rounded-xl flex items-center justify-center houver:bg-primary-500 transition-all"></LogIn>
               </Link>
             )}
           </div>
 
-          {/* {BOTÃO MOBILE} */}
-
           <div className="md:hidden flex items-center">
             <button
               type="button"
-              className="text-gray-400 p-2 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
+              className="text-gray-400 p-2 rounded-lg hover:bg-gray-800 transition-colors"
               onClick={changeMenu}
             >
+              {" "}
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -118,13 +116,13 @@ const Header = () => {
         <div>
           <div>
             {isAuthenticated ? (
-              <div>
+              <>
                 <nav className="space-y-1">
                   {navLink.map((link) => (
                     <Link
                       to={link.path}
                       key={link.path}
-                      className={`block p-4 rounded-lg ${
+                      className={`block p-5 rounded-lg ${
                         pathname === link.path
                           ? "bg-gray-800 text-primary-500 font-medium"
                           : "text-gray-400 hover:bg-gray-800 hover:text-primary-500"
@@ -136,20 +134,20 @@ const Header = () => {
                   ))}
                 </nav>
 
-                <div className="flex items-center justify-between p-4 border-t border-gray-700">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-700">
                   <div className="flex items-center space-x-2">
                     {renderAvatar()}
                     <span>{authState.user?.displayName}</span>
                   </div>
                   <button
                     type="button"
-                    onClick={handleSignOut}
-                    className="text-gray-400 cursor-pointer hover:text-red-700 p-2 rounded-full hover:bg-red-200 transition-colors"
+                    onClick={handlesignOut}
+                    className=" cursor-pointer text-gray-400 hover:text-red-700 p-2 rounded-full hover:bg-red-200 transition-colors"
                   >
                     <LogOut size={20} />
                   </button>
                 </div>
-              </div>
+              </>
             ) : (
               <Link
                 to="/login"
