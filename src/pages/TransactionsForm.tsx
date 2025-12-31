@@ -8,6 +8,7 @@ import Card from "../components/Card";
 import Input from "../components/Input";
 import Select from "../components/Select";
 import TransactionTypeSelector from "../components/TransactionTypeSelector";
+import { ROUTES } from "../routes/routes";
 import { getCategories } from "../services/categoryService";
 import { createTransaction } from "../services/transactionService";
 import type { Category } from "../types/category";
@@ -91,7 +92,7 @@ const TransactionsForm = () => {
 
       await createTransaction(transactionData);
       toast.success("Transação adicionada com sucesso!");
-      navigate("/transacoes");
+      navigate(ROUTES.TRANSACTIONS);
     } catch (_err) {
       toast.error("Falha ao adicionar transação");
     } finally {
@@ -100,7 +101,7 @@ const TransactionsForm = () => {
   };
 
   const handleCancel = () => {
-    navigate("/transacoes");
+    navigate(ROUTES.TRANSACTIONS);
   };
 
   return (
