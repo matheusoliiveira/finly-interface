@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-gray-800 border-t border-gray-700 py-4">
       <div className="container-app">
         <p className="text-sm text-gray-400 text-center">
-          DevBills {currentYear} - Desenvolvido por <strong>Matheus Oliveira</strong> com{" "}
+          Finly {currentYear} - Desenvolvido por <strong>Matheus Oliveira</strong> com{" "}
           <strong>TypeScript</strong> & <strong>React</strong>
         </p>
       </div>

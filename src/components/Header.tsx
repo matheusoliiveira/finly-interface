@@ -56,7 +56,7 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           <Link to={"/"} className="flex gap-2 text-xl text-primary-500 items-center font-bold">
             <Activity className="h-6 w-6" />
-            DevBills
+            Finly
           </Link>
 
           {isAuthenticated && (

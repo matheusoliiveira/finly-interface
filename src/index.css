@@ -3,9 +3,11 @@
 
 @theme {
     /* Cores do tema */
-    --color-primary-500: #9b59b6;
-    --color-primary-600: #8e44ad;
-    --color-primary-700: #6c3483;
+    --color-primary-500: #00FFFF; /* Cyan Neon principal */
+  --color-primary-600: #0ABDE3; /* Cyan Neon médio */
+  --color-primary-700: #0652FF; /* Azul Neon mais escuro */
+  --color-primary-800: #1F75FE; /* Azul Neon intenso */
+  --color-primary-900: #2978B5; /* Azul Neon profundo */
   
     --color-gray-950: #0B1017;
     /* background */

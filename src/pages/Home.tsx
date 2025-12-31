@@ -46,7 +46,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Gerencie suas finanças com o <span className="text-primary-500">DevBills</span>
+                Gerencie suas finanças com o <span className="text-primary-500">Finly</span>
               </h1>
               <p className="text-lg text-white mb-8">
                 Uma plataforma simples e eficiente para controlar suas despesas e receitas. Organize
@@ -64,7 +64,7 @@ const Home = () => {
         <section className="py-12 md:py-20 bg-gray-900 rounded-xl">
           <div className="container-app">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4">Recursos do DevBills</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Recursos do Finly</h2>
               <p className="text-lg text-white max-w-2xl mx-auto">
                 Nossa plataforma oferece tudo o que você precisa para manter suas finanças
                 organizadas.
@@ -91,8 +91,8 @@ const Home = () => {
               Pronto para organizar as suas finanças?
             </h2>
             <p className="text-white text-opacity-90 max-w-2xl mx-auto mb-8">
-              {""} Comece a usar o DevBills hoje mesmo e tenha o controle total sobre seu dinheiro.
-              É gratuito e fácil de usar!
+              {""} Comece a usar o Finly hoje mesmo e tenha o controle total sobre seu dinheiro. É
+              gratuito e fácil de usar!
             </p>
             <Button className="mx-auto px-6 py-3" onClick={() => navigate("/login")}>
               Criar Conta Gratuita
