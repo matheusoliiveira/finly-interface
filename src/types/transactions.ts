@@ -37,7 +37,7 @@ export interface TransactionSummary {
   totalExpenses: number;
   totalIncomes: number;
   balance: number;
-  expensesByCategory: CategorySummary[];
+  expenseCategory: CategorySummary[];
 }
 
 export interface MonthlyItem {
