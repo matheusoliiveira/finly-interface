@@ -1,69 +1,62 @@
-<h1>Finly</h1>
+# Finly 💰
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface web da aplicação Finly, desenvolvida para oferecer uma experiência
+simples, intuitiva e responsiva no controle financeiro pessoal.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🖥️ Preview
 
-## Expanding the ESLint configuration
+![Finly Preview](./docs/images/finly-preview.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Sobre o Projeto
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+O Finly é uma aplicação de gestão financeira que permite ao usuário acompanhar
+receitas e despesas de forma organizada, visual e acessível tanto no desktop
+quanto em dispositivos móveis.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Este repositório representa o **frontend da aplicação**, responsável pela interface
+do usuário e consumo da API backend.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ Tecnologias Utilizadas
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+- Firebase Authentication (integração com backend)
+
+
+
+---
+
+## 🔗 Integração com Backend
+
+O frontend consome a API desenvolvida em Node.js, responsável por autenticação,
+persistência de dados e regras de negócio.
+
+🔗 **Repositório do Backend:**  
+https://github.com/seu-usuario/devbills-api
+
+---
+
+## ▶️ Como executar o projeto
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/devbills-frontend.git
+
+# Acesse a pasta
+cd devbills-frontend
+
+# Instale as dependências
+npm install
+
+# Inicie a aplicação
+npm run dev
