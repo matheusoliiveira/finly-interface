@@ -42,7 +42,7 @@ O frontend consome a API desenvolvida em Node.js, responsável por autenticaçã
 persistência de dados e regras de negócio.
 
 🔗 **Repositório do Backend:**  
-https://github.com/matheusoliiveira/api-finly
+https://github.com/matheusoliiveira/finly-api
 
 ---
 
